@@ -1,3 +1,4 @@
+require "pry"
 def game_hash
   hashketball = {
     home: {
@@ -174,7 +175,7 @@ def big_shoe_rebounds
   rebounds = 0 
   game_hash.each do |location, team_data|
     team_data[:players].each do |players, stats|
-      if stats[:shoe] > 0 
+      if stats[:shoe] > shoe_size
         shoe_size = stats[:shoe]
         rebounds = stats[:rebounds]
       end
@@ -182,3 +183,23 @@ def big_shoe_rebounds
   end
   rebounds
 end
+
+def player_by_number(player_number)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |players, stats|
+      if stats[:number] == player_number
+        return players
+      end
+    end
+  end
+end
+
+binding.pry
+
+
+
+
+
+
+
+
